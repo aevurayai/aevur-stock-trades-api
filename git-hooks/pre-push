@@ -1,0 +1,22 @@
+#!/bin/sh
+# Prevent pushing to branches other than main
+# Require APPROACH.md in the repository tree before push 
+# DO NOT EDIT OR DELETE THIS FILE - IT IS REQUIRED TO EVALUATE YOUR PULL REQUEST
+
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+
+# Check if APPROACH.md exists (case-insensitive)
+if ! find . -type f -iname "approach.md" | grep -q .; then
+  echo "Commit rejected: APPROACH.md file is required in the repository. Check README.md for instrauctions"
+  exit 1
+fi
+
+if [ "$current_branch" != "main" ]; then
+  echo "Push rejected. Only pushes to 'main' are allowed."
+  exit 1
+fi
+
+
+
+exit 0

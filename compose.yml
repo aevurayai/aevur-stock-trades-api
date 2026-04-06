@@ -1,0 +1,7 @@
+services:
+  stocktrade-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      SERVER_PORT: 8000
